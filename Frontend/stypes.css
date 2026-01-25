@@ -1,0 +1,105 @@
+/* นำเข้าฟอนต์ Google Font (Sarabun) เพื่อความสวยงามของภาษาไทย */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Sarabun', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1a73e8;
+    border-bottom: 2px solid #e8f0fe;
+    padding-bottom: 10px;
+}
+
+.form-input {
+    margin-bottom: 15px;
+}
+
+.header-form {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.flex {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* ตกแต่งช่องกรอกข้อมูล */
+input.form, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+input.form:focus, textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* ตกแต่งปุ่ม */
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #1557b0;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+/* ปรับแต่งส่วน Radio และ Checkbox */
+.gender .flex div, .form-input div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}

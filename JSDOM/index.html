@@ -17,41 +17,90 @@
     <div onClick="devCleck()"> dev clicked</div>
 
     เพศ:
-    <input type="radio"name="gender"value="Male" onchange="onchangeGender()" checked="true">male
-    <input type="radio"name="gender"value="Female" onchange="onchangeGender()">female
+    <button 
+    onmouseover="onmouseFname()"
+    onmouseup="onmouseupFname()"
+    onmousedown="onmousedownFname()"
+    >Click me</button>
+<ul>
+    <li>กีฬา</li>
+    <li>ดนตรี</li>
+    <li>อ่านหนังสือ</li>
+</ul>
 
+    <hi2>แบบฟอร์มเลือกความสนใจ</hi2>
+    <div id ="Content"></div>
+    <input type= "Checkbox" name="interest"value="กีฬา">กีฬา
+    <input type= "Checkbox" name="interest"value="ดนตรี">ดนตรี
+    <input type= "Checkbox" name="interest"value="อ่านหนังสือ">อ่านหนังสือ
+    <br><br>
+    <button onclick="submitInterest()">ส่งข้อมูล</button>
     <script>
-        //Select DOM
-        const fnameInput = document.getElementsByClassName("input");
-        console.log(fnameInput); // Output: John
-        for (let i = 0; i < fnameInput.lenght; i++){
-            console.log(fnameInput[i].value);
+        function submitInterest(){
+            let checkboxes = document.querySelectorAll('input[name="interest"]');
+            let contentHTML = '<ul>';
+        for (let i = 0;i < checkboxes.length; i++){
+            console.log(checkboxes[i].value); //แสดงค่าที่เลือกใน console
+            contentHTML += '<li>' + checkboxes[i].value + '</li>';
+            }        
         }
-        let checkboxes = document.querySelectorAll('input[name="hobby"]');
-        for (let i = 0; i < fnameInput.lenght; i++){
-            console.log(checkboxes[i].value);
-        } 
-        
-        function userClicked(){
-            console.log("User clicked the button!");
-        }
-        function devCleck(){
-            console.log("Developer clicked the div!")
-        }
+       contentHTML += '</ul>';
 
-        function onchangeGender(){
+       let contentDiv = document.getElementById('content');
+       contentDiv.innerHTML = contentHTML;
+
+    //let hiDOM = document.getElementById("Hi");
+    //hiDOM.innerText = 'hello <b>A</b>';
+    //console.log(hiDOM.textContent);
+    //console.log(hiDOM.innerText);
+    //console.log(hiDOM.innerHTML);
+    //function onmouseoverFname(){
+        //console.log("Mouse is over the button");
+    //}
+    //function onmouseupFnmae(){
+        //console.log("Mouse is up the button");
+    //}
+    //function onmousedownFname(){
+        //console.log("Mouse down");
+    //}
+
+
+
+        //function onkeyfname(){
+            //let fname = document.querySelector('input[name="fname"]')
+            //console.log('fname',fname.value);
+        //}
+        //Select DOM
+        //const fnameInput = document.getElementsByClassName("input");
+        //console.log(fnameInput); // Output: John
+        //for (let i = 0; i < fnameInput.lenght; i++){
+            //console.log(fnameInput[i].value);
+        //}
+        //let checkboxes = document.querySelectorAll('input[name="hobby"]');
+        //for (let i = 0; i < fnameInput.lenght; i++){
+            //console.log(checkboxes[i].value);
+       // } 
+        
+        //function userClicked(){
+            //console.log("User clicked the button!");
+        //}
+        //function devCleck(){
+            //console.log("Developer clicked the div!")
+        //}
+
+        //function onchangeGender(){
         //เลือกgender ทุก input ออกมา
             let genderInputs = document.querySelectorAll('input[name="gender"]');
            
         //เช็ค ตัวไหน มี cheak อยู่ ให้เอา value มาแสดง
-            for (let i = 0; i < genderInput.lenght; i++){
-               if (genderInputs[i].checked){                       
-                    console.log("เพศที่เลือก: " = genderInputs[i].value);
+            //for (let i = 0; i < genderInput.lenght; i++){
+               //if (genderInputs[i].checked){                       
+                    //console.log("เพศที่เลือก: " = genderInputs[i].value);
 
-               }
-            }
+               //}
+            //}
 
-        }
+        //}
     </script>
     
 </body>
