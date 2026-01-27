@@ -1,0 +1,18 @@
+docker run // พิมพ์แล้วเก็บในคอนเทน
+docker ps 
+//docker list container all
+docker ps --all // เรียกออกมาดู
+docker run busybox ls // 
+docker run busybox ping google.com
+docker stop container ID
+docker pull busybox
+docker create busybox ping google.com
+docker start CONTAINER ID 
+docker start -a CONTAINER ID
+
+docker system prune
+docker run nginx
+docker exec CONTAINER ID ls 
+
+docker exec -it CONTAINER ID sh
+docker exec -it CONTAINER ID bash
