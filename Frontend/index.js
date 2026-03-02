@@ -1,26 +1,40 @@
-function submitData(){
-    let firstNameDOM = document.querySelector('input[name=firstname]');
+const submitData = async () => {
+    let firstnameDOM = document.querySelector('input[name=firstname]');
     let lastnameDOM = document.querySelector('input[name=lastname]');
     let ageDOM = document.querySelector('input[name=age]');
     let genderDOM = document.querySelector('input[name=gender]:checked');
-    let interestDOMs = document.querySelectorAll('input[name=interest]:checked');
+    let interestDOMs = document.querySelectorAll('input[name=interests]:checked');
     let descriptionDOM = document.querySelector('textarea[name=description]');
+    let messageDOM = document.getElementById('message')
 
-    let interest =''
-    for (let i = 0 ; i < interestDOMs.length; i++) {
-        interest += interestDOMs[i].value
-        if (i != interestDOMs.length - 1){
+    try{
+        let interest =''
+        for (let i = 0 ; i < interestDOMs.length; i++) {
+            interest += interestDOMs[i].value
+            if (i != interestDOMs.length - 1){
             interest += ','
         }
     }
 
     let userData ={
-        firstName: firstNameDOM.value,
-        lastName: lastnameDOM.value,
-        age: ageDOM.value,
-        gender: genderDOM.value,
-        description: descriptionDOM.value,
-        interest: interest
+        Firstname: firstnameDOM.value,
+        Lastname: lastnameDOM.value,
+        Age: ageDOM.value,
+        Gender: genderDOM ? genderDOM.value:'',
+        Description: descriptionDOM.value,
+        Interests: interest
+    };
+        console.log('submitData',userData);
+        const response = await axios.post('http://localhost:8000/users',userData);
+
+        console.log('response',response);
+        messageDOM.innerText = 'บันทึกข้อมูลสำเร็จ'
+        messageDOM.className = 'message success'
+
+    }catch(error){
+        console.error('Error:',error)
+        
+        messageDOM.innerText = 'เกิดข้อผิดพลาด'
+        messageDOM.className = 'message danger'
     }
-    console.log('submitData',userData);
-}
+};

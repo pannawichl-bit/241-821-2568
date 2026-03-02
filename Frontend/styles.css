@@ -89,6 +89,23 @@ textarea {
     margin-top: 1rem;
 }
 
+.message{
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px; 
+}
+
+.message.success{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.message.danger{
+    background-color: #f44336;
+    color: white;
+}
+
 .button {
     background-color: #007bff;
     color: white;

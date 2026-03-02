@@ -1,10 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise');
+const cors = require('cors');
 const app = express();
 const port = 8000;
-app.use(bodyParser.json());
 
+app.use(bodyParser.json());
+app.use(cors());
+
+let users = []
+let counter = 1;
 let conn = null
 const initDBConnection = async () => {
     conn = await mysql.createConnection({
@@ -27,7 +32,7 @@ app.get('/users/:id', async (req, res) => {
         res.json(results[0][0]);
     }
     catch(error){
-        console.error('Error fetchinf user:',error.message);
+        console.error('Error fetching user:',error.message);
         let statusCode = error.statusCode || 500;
         res.status(statusCode).json({
             message: 'Error fetching user',
@@ -39,21 +44,25 @@ app.get('/users/:id', async (req, res) => {
 //path = POST /users สำหรับเพิ่ม user ใหม่
 app.post('/users', async (req, res) => {
     try{
-        let user = req.body;
-        const results = await conn.query('INSERT INTO users SET ?', user)
-        console.log('results:',results);
+        const { Firstname, Lastname, Age, Gender, Interests, Description } = req.body;
+
+        const [results] = await conn.query(
+            'INSERT INTO users (Firstname, Lastname, Age, Gender, Interest, Description) VALUES (?, ?, ?, ?, ?,?)',
+            [Firstname, Lastname, Age, Gender, Interests, Description]
+        );
+
         res.json({
             message: 'User created successfully',
-            data: results[0]
-        })    
-    }catch(err){
+            insertId: results.insertId
+        });
+
+    } catch(error){
         console.error('Error creating user: ', error);
         res.status(500).json({
             message: 'Error creating user',
             error: error.message
         });
     }
-        
 });
 
 
