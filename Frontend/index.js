@@ -20,7 +20,7 @@ const submitData = async () => {
         Firstname: firstnameDOM.value,
         Lastname: lastnameDOM.value,
         Age: ageDOM.value,
-        Gender: genderDOM ? genderDOM.value:'',
+        Gender: genderDOM ? genderDOM.value:'lop;i988i9',
         Description: descriptionDOM.value,
         Interests: interest
     };
